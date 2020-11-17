@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "CSC250 Android 1"
