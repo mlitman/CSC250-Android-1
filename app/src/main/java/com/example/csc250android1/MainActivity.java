@@ -15,9 +15,15 @@ public class MainActivity extends AppCompatActivity
         this.setContentView(R.layout.activity_main);
     }
 
-    public void onButtonClicked(View v)
+    public void onFnameButtonClicked(View v)
     {
-        TextView myTextView = this.findViewById(R.id.myTextView);
-        myTextView.setText("Hello World!!!");
+        TextView myTextView = this.findViewById(R.id.fname_tv);
+        myTextView.setText("Mike");
+    }
+
+    public void onLnameButtonClicked(View v)
+    {
+        TextView myTextView = this.findViewById(R.id.lname_tv);
+        myTextView.setText("Litman");
     }
 }
