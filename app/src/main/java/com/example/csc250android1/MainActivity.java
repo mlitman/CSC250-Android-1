@@ -5,41 +5,92 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
 {
-    private Button d6_button;
-    private Button d20_button;
-    private TextView d6_tv;
-    private TextView d20_tv;
-
+    private TextView quantityTV;
+    private TextView diceTV;
+    private TextView totalTV;
+    private TextView outputTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
-        this.d6_button = this.findViewById(R.id.d6_button);
-        this.d20_button = this.findViewById(R.id.d20_button);
-        this.d6_tv = this.findViewById(R.id.d6_tv);
-        this.d20_tv = this.findViewById(R.id.d20_tv);
+        this.quantityTV = this.findViewById(R.id.quantityTV);
+        this.diceTV = this.findViewById(R.id.diceTV);
+        this.totalTV = this.findViewById(R.id.total_tv);
+        this.outputTV = this.findViewById(R.id.output_tv);
+
+        //clear the interface
+        this.outputTV.setText("");
+        this.totalTV.setText("");
+        this.quantityTV.setText("");
     }
 
-    public void onButtonClicked(View v)
+    public void onRollButtonPressed(View v)
     {
-        //v is the View that called this function
-        //Buttons are instances of Views
-        //is the button that was push the same as the fname_button
-        if(v == this.d6_button)
+        int quantity = 1;
+        if(this.quantityTV.getText().toString().length() > 0)
         {
-            Dice d6 = new Dice(6);
-            this.d6_tv.setText("" + d6.roll());
+            quantity = Integer.parseInt(this.quantityTV.getText().toString());
         }
-        else if(v == this.d20_button)
+
+        String typeOfDice = this.diceTV.getText().toString();
+        int numberOfSides = Integer.parseInt(typeOfDice.substring(1));
+        Dice d = new Dice(numberOfSides);
+        int[] theRolls = new int[quantity];
+        int sum = 0;
+        String outputString = "";
+        for(int i = 0; i < theRolls.length; i++)
         {
-            Dice d20 = new Dice(20);
-            this.d20_tv.setText("" + d20.roll());
+            theRolls[i] = d.roll();
+            sum += theRolls[i];
+            if(outputString.length() == 0)
+            {
+                outputString += theRolls[i];
+            }
+            else
+            {
+                //there must already be something in my output string, so tack on a + each time
+                outputString += "+ " + theRolls[i];
+            }
         }
+        this.outputTV.setText(outputString);
+        this.totalTV.setText("" + sum);
+    }
+
+    public void onPercentileButtonPressed(View v)
+    {
+        Dice d100 = new Dice(100);
+        outputTV.setText("");
+        totalTV.setText("" + d100.roll());
+    }
+
+    public void onNumPadButtonPressed(View v)
+    {
+        Button theButton = (Button)v;
+        String currentQuantity = this.quantityTV.getText().toString();
+        if(theButton.getText().equals("0") && currentQuantity.length() == 0)
+        {
+            //don't allow a 0 to start a number
+            return;
+        }
+        currentQuantity += theButton.getText();
+        this.quantityTV.setText(currentQuantity);
+    }
+
+    public void onDiceButtonPressed(View v)
+    {
+        ImageButton theButton = (ImageButton)v;
+        this.diceTV.setText(theButton.getTag().toString());
+    }
+
+    public void onClearButtonPressed(View v)
+    {
+        this.quantityTV.setText("");
     }
 }

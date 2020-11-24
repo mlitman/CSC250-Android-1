@@ -48,6 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight=".33"
+                    android:onClick="onNumPadButtonPressed"
                     android:text="7" />
 
                 <Button
@@ -55,6 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight=".33"
+                    android:onClick="onNumPadButtonPressed"
                     android:text="8" />
 
                 <Button
@@ -62,6 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight=".33"
+                    android:onClick="onNumPadButtonPressed"
                     android:text="9" />
             </LinearLayout>
 
@@ -76,6 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onNumPadButtonPressed"
                     android:text="4" />
 
                 <Button
@@ -83,6 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onNumPadButtonPressed"
                     android:text="5" />
 
                 <Button
@@ -90,6 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onNumPadButtonPressed"
                     android:text="6" />
 
             </LinearLayout>
@@ -105,6 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onNumPadButtonPressed"
                     android:text="1" />
 
                 <Button
@@ -112,6 +119,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onNumPadButtonPressed"
                     android:text="2" />
 
                 <Button
@@ -119,9 +127,81 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onNumPadButtonPressed"
                     android:text="3" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".33"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/zero_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".33"
+                    android:onClick="onNumPadButtonPressed"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".67"
+                    android:onClick="onClearButtonPressed"
+                    android:text="Clear" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".33"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/quantityTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="9"
+                    android:textColor="#8BC34A"
+                    android:textSize="50sp" />
+
+                <TextView
+                    android:id="@+id/diceTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="D4"
+                    android:textColor="#FFEB3B"
+                    android:textSize="50sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".33"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onRollButtonPressed"
+                    android:text="Roll" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onPercentileButtonPressed"
+                    android:text="%" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -135,18 +215,26 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
+                <ImageButton
                     android:id="@+id/d4_button"
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_weight="1"
+                    android:onClick="onDiceButtonPressed"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/d4"
+                    android:tag="D4"
                     android:text="D4" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/d6_button"
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_weight="1"
+                    android:onClick="onDiceButtonPressed"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/d6"
+                    android:tag="D6"
                     android:text="D6" />
 
             </LinearLayout>
@@ -156,19 +244,27 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/d4_button3"
+                <ImageButton
+                    android:id="@+id/d8_button"
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:text="D4" />
+                    android:onClick="onDiceButtonPressed"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/d8"
+                    android:tag="D8"
+                    android:text="D8" />
 
-                <Button
-                    android:id="@+id/d4_button2"
+                <ImageButton
+                    android:id="@+id/d10_button"
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:text="D4" />
+                    android:onClick="onDiceButtonPressed"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/d10"
+                    android:tag="D10"
+                    android:text="D10" />
             </LinearLayout>
 
             <LinearLayout
@@ -176,19 +272,27 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/d4_button5"
+                <ImageButton
+                    android:id="@+id/d12_button"
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:text="D4" />
+                    android:onClick="onDiceButtonPressed"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/d12"
+                    android:tag="D12"
+                    android:text="D12" />
 
-                <Button
-                    android:id="@+id/d4_button4"
+                <ImageButton
+                    android:id="@+id/d20_button"
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:text="D4" />
+                    android:onClick="onDiceButtonPressed"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/d20"
+                    android:tag="D20"
+                    android:text="D20" />
             </LinearLayout>
 
         </LinearLayout>
